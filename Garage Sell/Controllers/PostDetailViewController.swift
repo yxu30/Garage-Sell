@@ -24,18 +24,18 @@ class PostDetailViewController: UIViewController {
     
     @IBOutlet weak var itemDescription: UITextView!
     
-    func updateView() {
-        // user
-        // images
-        
-        itemTitle.text = post?.title
-        itemPrice.text = Utility.formatPrice(post!.price)
-        itemDescription.text = post?.description
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
+    }
+    
+    func updateView() {
+        // user
+        // images
+        itemTitle.text = post?.title
+        itemPrice.text = Utility.formatPrice(post!.price)
+        itemDescription.text = post?.description
     }
     
     override func viewWillAppear(_ animated: Bool) {

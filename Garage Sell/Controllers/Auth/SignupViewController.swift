@@ -42,11 +42,12 @@
                         self.showErrorMassage("error creating user")
                     }else{
                         let db = Firestore.firestore()
-                        db.collection("User").addDocument(data: [
+                        let uid = Auth.auth().currentUser?.uid
+                        db.collection(Constants.usersCollectionName).document(uid!).setData([
                             "PIDs" : [],
-                            "contactInfo" : ["email": cleanedEmail, "phoneNumber" : nil],
-                            "name" : cleanedUsername! as String,
-                            "UID" : result!.user.uid
+                            "contactEmail" : cleanedEmail! as String,
+                            "contactPhone" : "",
+                            "name" : cleanedUsername! as String
                         ]){(error) in
                             if error != nil{
                                 self.showErrorMassage("Something wrong here")

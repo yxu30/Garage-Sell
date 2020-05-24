@@ -15,10 +15,15 @@ class Constants{
     static let homeTableViewControllerIdentifier = "HomeVC"
     static let postDetailViewControllerIdentifier = "PostDVC"
     static let postUploadViewControllerIdentifier = "PostUVC"
+    static let accountViewControllerIdentifier = "AccountVC"
     static let profileViewControllerIdentifier = "ProfVC"
     
     static let itemCellIdentifier = "itemCell"
     static let itemDetailIdentifier = "showDetail"
+    
+    
+    static let usersCollectionName = "users"
+    static let postsCollectionName = "Post"
     
     enum Category : String{
         case schoolSupply = "SCHOOL SUPPLY"
