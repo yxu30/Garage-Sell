@@ -20,13 +20,21 @@ class Constants{
     
     static let itemCellIdentifier = "itemCell"
     static let itemDetailIdentifier = "showDetail"
-    
+    static let itemUploadContinueIdentifier = "postUploadContinue"
     
     static let usersCollectionName = "users"
     static let postsCollectionName = "Post"
     
     enum Category : String{
-        case schoolSupply = "SCHOOL SUPPLY"
+        case beauty = "Beauty"
+        case books = "Books"
+        case clothes = "Clothes"
+        case cookware = "Cookware"
+        case furnitures = "Furniture"
+        case games = "Games"
+        case schoolSupplies = "School Supplies"
+        case tools = "Tools"
+        case miscellaneous = "Misc."
     }
     
 }

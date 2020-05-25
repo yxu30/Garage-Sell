@@ -12,7 +12,7 @@ import Firebase
 
 class Post{
     var id: String
-    var category: Constants.Category
+//    var category: Constants.Category
     var description: String
 //    var images: [String]()
     var isSell: Bool
@@ -27,7 +27,7 @@ class Post{
     init(documentSnapshot: DocumentSnapshot){
         self.id = documentSnapshot.documentID
         let data = documentSnapshot.data()
-        category = Constants.Category(rawValue: data!["category"] as! String)!
+//        category = Constants.Category(rawValue: data!["category"] as! String)!
         description = data!["description"] as! String
         
 //        images =

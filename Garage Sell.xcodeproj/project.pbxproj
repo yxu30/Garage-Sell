@@ -14,6 +14,8 @@
 		AA41AFDF2479DDED00DF73F6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41AFDE2479DDED00DF73F6 /* SignupViewController.swift */; };
 		AA41AFE3247A5A2100DF73F6 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41AFE2247A5A2100DF73F6 /* AccountViewController.swift */; };
 		AA41AFE6247A849F00DF73F6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41AFE5247A849F00DF73F6 /* ProfileViewController.swift */; };
+		AA41AFE9247B3D2A00DF73F6 /* PostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41AFE8247B3D2A00DF73F6 /* PostUploadViewController.swift */; };
+		AA41AFEE247B616500DF73F6 /* ContinuePostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41AFED247B616400DF73F6 /* ContinuePostUploadViewController.swift */; };
 		AAE80002247387B2001D9430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE80000247387B2001D9430 /* Main.storyboard */; };
 		AAE80004247387B3001D9430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE80003247387B3001D9430 /* Assets.xcassets */; };
 		AAE80007247387B3001D9430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE80005247387B3001D9430 /* LaunchScreen.storyboard */; };
@@ -37,6 +39,8 @@
 		AA41AFDE2479DDED00DF73F6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		AA41AFE2247A5A2100DF73F6 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AA41AFE5247A849F00DF73F6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AA41AFE8247B3D2A00DF73F6 /* PostUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUploadViewController.swift; sourceTree = "<group>"; };
+		AA41AFED247B616400DF73F6 /* ContinuePostUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuePostUploadViewController.swift; sourceTree = "<group>"; };
 		AAE80001247387B2001D9430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAE80003247387B3001D9430 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAE80006247387B3001D9430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,12 +105,29 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		AA41AFE7247B3D0000DF73F6 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				AAE8FFFE247387B2001D9430 /* PostDetailViewController.swift */,
+				AA41AFE8247B3D2A00DF73F6 /* PostUploadViewController.swift */,
+				AA41AFED247B616400DF73F6 /* ContinuePostUploadViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		AA41AFEA247B443500DF73F6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AAE8FFFC247387B2001D9430 /* HomeTableViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		AAE800102473988A001D9430 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				AA41AFD52477C38C00DF73F6 /* Auth */,
-				AAE8FFFC247387B2001D9430 /* HomeTableViewController.swift */,
-				AAE8FFFE247387B2001D9430 /* PostDetailViewController.swift */,
+				AA41AFE7247B3D0000DF73F6 /* Post */,
 				AA41AFE4247A75AA00DF73F6 /* Account */,
 			);
 			path = Controllers;
@@ -146,6 +167,7 @@
 				AA41AFD82479DB1700DF73F6 /* UIUtility.swift */,
 				AA41AFD12477C11400DF73F6 /* Utility.swift */,
 				AAE800102473988A001D9430 /* Controllers */,
+				AA41AFEA247B443500DF73F6 /* Home */,
 				AAE8001524770014001D9430 /* Model */,
 				AAE80000247387B2001D9430 /* Main.storyboard */,
 				AAE8FFF8247387B2001D9430 /* AppDelegate.swift */,
@@ -278,6 +300,7 @@
 			files = (
 				AA41AFDD2479DD3D00DF73F6 /* LoginViewController.swift in Sources */,
 				AA41AFD92479DB1700DF73F6 /* UIUtility.swift in Sources */,
+				AA41AFEE247B616500DF73F6 /* ContinuePostUploadViewController.swift in Sources */,
 				AA41AFE3247A5A2100DF73F6 /* AccountViewController.swift in Sources */,
 				AAE8000F247391A6001D9430 /* Constants.swift in Sources */,
 				AA41AFD22477C11400DF73F6 /* Utility.swift in Sources */,
@@ -287,6 +310,7 @@
 				AAE8FFFD247387B2001D9430 /* HomeTableViewController.swift in Sources */,
 				AAE8FFFF247387B2001D9430 /* PostDetailViewController.swift in Sources */,
 				AA41AFE6247A849F00DF73F6 /* ProfileViewController.swift in Sources */,
+				AA41AFE9247B3D2A00DF73F6 /* PostUploadViewController.swift in Sources */,
 				AAE800142477000E001D9430 /* User.swift in Sources */,
 				AAE8001724770039001D9430 /* Post.swift in Sources */,
 			);

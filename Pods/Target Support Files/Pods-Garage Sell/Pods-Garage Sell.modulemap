@@ -1,0 +1,6 @@
+framework module Pods_Garage_Sell {
+  umbrella header "Pods-Garage Sell-umbrella.h"
+
+  export *
+  module * { export * }
+}
