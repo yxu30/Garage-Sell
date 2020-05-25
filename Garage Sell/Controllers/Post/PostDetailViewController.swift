@@ -38,6 +38,10 @@ class PostDetailViewController: UIViewController {
         itemDescription.text = post?.description
     }
     
+    @objc fileprivate func downloadPhoto(){
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         postListener = postRef.addSnapshotListener({(documentSnapshot, error) in

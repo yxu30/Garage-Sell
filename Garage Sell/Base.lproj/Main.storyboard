@@ -166,17 +166,21 @@
                         <viewLayoutGuide key="safeArea" id="UJw-CM-Hfu"/>
                     </view>
                     <navigationItem key="navigationItem" id="UjI-nW-kDm">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="1fw-r7-jTO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="1fw-r7-jTO">
+                            <connections>
+                                <action selector="submitPressed:" destination="vn5-PO-mkB" id="Bhv-n5-8dH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="itemPrice" destination="YTY-se-csV" id="UEo-Jd-uV3"/>
+                        <outlet property="itemPriceTextField" destination="YTY-se-csV" id="UEo-Jd-uV3"/>
                         <outlet property="sellOrDemandSelector" destination="Hzj-S7-OgO" id="HoX-Un-Bex"/>
-                        <outlet property="uploadPost" destination="1fw-r7-jTO" id="5Lq-pp-ESs"/>
+                        <outlet property="uploadPostButton" destination="1fw-r7-jTO" id="Imx-Y6-Yhw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQ0-xy-Lzj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-151.19999999999999" y="425.61576354679806"/>
+            <point key="canvasLocation" x="207" y="424"/>
         </scene>
         <!--Item-->
         <scene sceneID="ne1-Dg-W5h">
@@ -193,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EtI-Jk-yN3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="562" y="422"/>
+            <point key="canvasLocation" x="914" y="421"/>
         </scene>
         <!--Post-->
         <scene sceneID="UCY-hD-2ys">
@@ -222,9 +226,24 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYJ-7F-oSZ">
                                 <rect key="frame" x="10" y="117.99999999999999" width="355" height="199.66666666666663"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XQ-Do-KDi">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="199.66666666666666"/>
+                                        <state key="normal" title="Add Photo">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addPhotoButtonPressed:" destination="9QA-E3-U47" eventType="touchUpInside" id="MrX-BP-xSw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="0XQ-Do-KDi" firstAttribute="leading" secondItem="yYJ-7F-oSZ" secondAttribute="leading" id="5BE-jY-vhL"/>
+                                    <constraint firstAttribute="bottom" secondItem="0XQ-Do-KDi" secondAttribute="bottom" id="cHb-t7-7hI"/>
+                                    <constraint firstItem="0XQ-Do-KDi" firstAttribute="top" secondItem="yYJ-7F-oSZ" secondAttribute="top" id="e2I-wu-bCv"/>
                                     <constraint firstAttribute="width" secondItem="yYJ-7F-oSZ" secondAttribute="height" multiplier="16:9" id="tyH-fg-CHs"/>
+                                    <constraint firstAttribute="trailing" secondItem="0XQ-Do-KDi" secondAttribute="trailing" id="xMz-WI-THt"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2jN-Yp-HMv">
@@ -277,14 +296,15 @@
                     <navigationItem key="navigationItem" title="Post" id="gl4-mI-Y8M"/>
                     <connections>
                         <outlet property="continueButton" destination="oNC-My-4k2" id="ngt-mB-PYD"/>
+                        <outlet property="imagePickerButton" destination="0XQ-Do-KDi" id="gcI-Zg-jxM"/>
                         <outlet property="itemDescription" destination="o3x-Qu-y8v" id="Acq-JJ-Eal"/>
                         <outlet property="itemTitle" destination="2jN-Yp-HMv" id="Pim-7P-WKn"/>
-                        <outlet property="scrollableImageView" destination="yYJ-7F-oSZ" id="PN5-kV-Tl2"/>
+                        <outlet property="photoUploadView" destination="yYJ-7F-oSZ" id="9Gg-Wx-00H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xtx-ej-V9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-882.39999999999998" y="425.61576354679806"/>
+            <point key="canvasLocation" x="-606" y="424"/>
         </scene>
         <!--Account-->
         <scene sceneID="NN6-It-G30">
@@ -468,6 +488,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWA-oX-rpC">
+                                <rect key="frame" x="330" y="386.33333333333331" width="25" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Du3-4V-WYq"/>
+                                    <constraint firstAttribute="width" constant="25" id="Uqc-vx-Mb5"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="heart.fill" catalog="system">
+                                    <color key="titleColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -479,7 +510,9 @@
                             <constraint firstItem="a7h-yA-5dz" firstAttribute="leading" secondItem="XhD-vd-i39" secondAttribute="leading" constant="20" id="EbM-pa-YwK"/>
                             <constraint firstItem="NaZ-yb-UF5" firstAttribute="leading" secondItem="XhD-vd-i39" secondAttribute="leading" constant="20" id="RE9-lP-CgM"/>
                             <constraint firstItem="XhD-vd-i39" firstAttribute="trailing" secondItem="ifB-fm-U1q" secondAttribute="trailing" constant="20" id="RRn-mH-Wmv"/>
+                            <constraint firstItem="Ifq-3V-pO4" firstAttribute="bottom" secondItem="lWA-oX-rpC" secondAttribute="bottom" id="RX1-Bs-lXs"/>
                             <constraint firstItem="a7h-yA-5dz" firstAttribute="top" secondItem="LTY-nJ-eXo" secondAttribute="bottom" constant="5" id="UIq-QK-SYO"/>
+                            <constraint firstItem="XhD-vd-i39" firstAttribute="trailing" secondItem="lWA-oX-rpC" secondAttribute="trailing" constant="20" id="d2O-ph-X8W"/>
                             <constraint firstItem="XhD-vd-i39" firstAttribute="bottom" secondItem="a7h-yA-5dz" secondAttribute="bottom" constant="20" id="dUh-ZI-Z16"/>
                             <constraint firstItem="ifB-fm-U1q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NaZ-yb-UF5" secondAttribute="trailing" constant="8" symbolic="YES" id="gO8-OM-7LG"/>
                             <constraint firstItem="XhD-vd-i39" firstAttribute="trailing" secondItem="a7h-yA-5dz" secondAttribute="trailing" constant="20" id="gg1-24-78t"/>
@@ -503,7 +536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUX-Ec-VPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-89" y="-306"/>
+            <point key="canvasLocation" x="-90.400000000000006" y="-306.6502463054187"/>
         </scene>
         <!--Home-->
         <scene sceneID="eLc-Hb-MMF">
@@ -913,6 +946,7 @@
     </scenes>
     <resources>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>

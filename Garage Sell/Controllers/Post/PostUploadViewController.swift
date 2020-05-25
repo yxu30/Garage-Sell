@@ -8,25 +8,26 @@
 
 import UIKit
 
-class PostUploadViewController: UIViewController {
+class PostUploadViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var scrollableImageView: UIView!
+    
+    @IBOutlet weak var photoUploadView: UIView!
+    
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemDescription: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     
-    var didUserSelectedImages = false
-    var images = [UIImageView]()
+    @IBOutlet weak var imagePickerButton: UIButton!
+    
+    var image : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if didUserSelectedImages{
-            // display button
-        }else{
-            // display scrollable imageView
-        }
-        
         UIUtility.floatButton(continueButton)
+    }
+    
+    @IBAction func addPhotoButtonPressed(_ sender: Any) {
+        showImagePickerController()
     }
     
     @IBAction func continuePressed(_ sender: Any) {
@@ -39,11 +40,6 @@ class PostUploadViewController: UIViewController {
             present(alertController, animated: true, completion: nil)
             return
         }
-        
-        if itemDescription.text == ""{
-            itemDescription.text = "This item doesn't have any description"
-        }
-        
         // if image == null
         
     }
@@ -52,10 +48,33 @@ class PostUploadViewController: UIViewController {
         if segue.identifier == Constants.itemUploadContinueIdentifier{
             (segue.destination as! ContinuePostUploadViewController).firstPageItem = ["title" : itemTitle.text! as String,
                                                                                       "description" : itemDescription.text! as String,
-                "images": images]
+                                                                                      "image": image as UIImage]
         }
     }
-    
-    
+}
 
+
+//  This snip of code about picking image with UIImagePickerController comes from Youtube Video
+// "Pick Image with UIImagePickerController in Swift"
+// https://www.youtube.com/watch?v=JYkj1UmQ6_g&t=294s
+
+extension PostUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func showImagePickerController(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
+            imagePickerButton.setImage(editedImage, for: .normal)
+            image = editedImage
+        }else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            imagePickerButton.setImage(originalImage, for: .normal)
+            image = originalImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }

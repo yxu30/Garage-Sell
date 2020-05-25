@@ -34,18 +34,12 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let categoryButton = UIBarButtonItem(title: "Categories", style: .plain, target: self, action: #selector(showCategoryOptions))
-        
-        navigationItem.rightBarButtonItem = categoryButton
-        
         postsRef = Firestore.firestore().collection("Post")
         backgroundColor = sellingItemColors
     }
     
-    @objc func showCategoryOptions(){
-         
-    }
+    
+
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
