@@ -31,6 +31,12 @@ class PostDetailViewController: UIViewController {
         super.viewDidLoad()
         updateView()
         print("uri? \(post?.imageURI)")
+        
+        if post.owner != Auth.auth().currentUser?.uid{
+            itemDescription.isEditable = false
+        }
+        
+        
     }
     @IBAction func favoriateOnPressed(_ sender: Any) {
         saved = !saved

@@ -529,7 +529,7 @@
                     <navigationItem key="navigationItem" id="Dnn-Bn-2pT"/>
                     <connections>
                         <outlet property="favoriateIconButton" destination="lWA-oX-rpC" id="44s-nR-85V"/>
-                        <outlet property="itemDescription" destination="a7h-yA-5dz" id="5vq-Be-Vdy"/>
+                        <outlet property="itemDescription" destination="a7h-yA-5dz" id="hfG-GW-ohG"/>
                         <outlet property="itemImageView" destination="7HK-1u-r9A" id="Xjd-gj-cY3"/>
                         <outlet property="itemPrice" destination="ifB-fm-U1q" id="Bze-pg-0q1"/>
                         <outlet property="itemTitle" destination="NaZ-yb-UF5" id="edp-Gx-xu4"/>
