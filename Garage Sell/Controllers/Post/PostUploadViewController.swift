@@ -53,7 +53,7 @@ class PostUploadViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == Constants.itemUploadContinueIdentifier{
             (segue.destination as! ContinuePostUploadViewController).firstPageItem = ["title" : itemTitle.text! as String,
                                                                                       "description" : itemDescription.text! as String,
-                                                                                      "image": image as UIImage]
+                                                                                      "image": image as UIImage?]
         }
     }
 }
