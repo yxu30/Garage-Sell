@@ -23,7 +23,6 @@
 		AAE800142477000E001D9430 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE800132477000D001D9430 /* User.swift */; };
 		AAE8001724770039001D9430 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE8001624770039001D9430 /* Post.swift */; };
 		AAE8001B24772666001D9430 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAE8001A24772666001D9430 /* GoogleService-Info.plist */; };
-		AAE8001D24775EAE001D9430 /* noImageFound.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AAE8001C24775EAE001D9430 /* noImageFound.jpeg */; };
 		AAE8FFF9247387B2001D9430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE8FFF8247387B2001D9430 /* AppDelegate.swift */; };
 		AAE8FFFB247387B2001D9430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE8FFFA247387B2001D9430 /* SceneDelegate.swift */; };
 		AAE8FFFD247387B2001D9430 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE8FFFC247387B2001D9430 /* HomeTableViewController.swift */; };
@@ -49,7 +48,6 @@
 		AAE800132477000D001D9430 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AAE8001624770039001D9430 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AAE8001A24772666001D9430 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		AAE8001C24775EAE001D9430 /* noImageFound.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noImageFound.jpeg; sourceTree = SOURCE_ROOT; };
 		AAE8FFF5247387B2001D9430 /* Garage Sell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Garage Sell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE8FFF8247387B2001D9430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE8FFFA247387B2001D9430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				AAE80003247387B3001D9430 /* Assets.xcassets */,
 				AAE8001A24772666001D9430 /* GoogleService-Info.plist */,
 				AAE80008247387B3001D9430 /* Info.plist */,
-				AAE8001C24775EAE001D9430 /* noImageFound.jpeg */,
 			);
 			path = "Garage Sell";
 			sourceTree = "<group>";
@@ -244,7 +241,6 @@
 				AAE80007247387B3001D9430 /* LaunchScreen.storyboard in Resources */,
 				AAE8001B24772666001D9430 /* GoogleService-Info.plist in Resources */,
 				AAE80004247387B3001D9430 /* Assets.xcassets in Resources */,
-				AAE8001D24775EAE001D9430 /* noImageFound.jpeg in Resources */,
 				AAE80002247387B2001D9430 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

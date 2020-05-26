@@ -7,19 +7,90 @@
 //
 
 import UIKit
+import Firebase
 
 class ContinuePostUploadViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var itemPriceTextField: UITextField!
     @IBOutlet weak var sellOrDemandSelector: UISegmentedControl!
-    @IBOutlet weak var uploadPostButton: UIBarButtonItem!
     
     var firstPageItem : [String : Any]!
     var itemTitle: String!
     var itemDescription: String! = ""
     var image : UIImage?
-    
     var price : Int = 0
+    var isSell = true
+    
+    
+    var postRef : DocumentReference!
+    var postsRef : CollectionReference!
+    
+    func uploadImageAndReturnURI() -> String{
+        if image == nil{
+            return ""
+        }
+        guard let image = image, let data = image.jpegData(compressionQuality: 1.0)
+            else{
+                return ""
+        }
+        let imageName = UUID().uuidString
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let imageRef = storageRef.child(imageName)
+        var imageURL = ""
+        imageRef.putData(data, metadata: nil){
+            (metadata, err) in
+            if let err = err{
+                print("STH went WRONG WHILE UPLOAD IMAGE \(err)")
+            }
+            imageRef.downloadURL {(url, error) in
+                if let url = url {
+                    print("url \(url)")
+                    imageURL = "\(url)"
+                    
+                    self.postRef.updateData(["imageURI" : imageURL])
+                }
+            }
+        }
+        return imageURL
+    }
+
+    
+    
+    @IBAction func segmentSwiped(_ sender: Any) {
+        isSell = !isSell
+    }
+    
+    
+    func uploadPost(){
+        // upload post
+        postRef = postsRef.addDocument(data: [
+            "createdAt" :Timestamp.init(),
+            "description" : itemDescription,
+            "imageURI" : uploadImageAndReturnURI(),
+            "isSell" : isSell,
+            "modifiedAt":Timestamp.init(),
+            "owner" : Auth.auth().currentUser!.uid,
+            "price" : Double(price/100) + Double(price%100)/100,
+            "sold" : false,
+            "title" : itemTitle
+            ])
+        
+        DispatchQueue.main.async {
+            self.loadHomePage()
+        }
+        
+    }
+    
+        func loadHomePage(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabController = storyBoard.instantiateViewController(withIdentifier: Constants.homeTabBarControllerIdentifier) as! UITabBarController
+        view.window?.rootViewController = tabController
+    }
+    
+    @IBAction func submitButtonPressed(_ sender: Any) {
+        uploadPost()
+    }
     
     
     override func viewDidLoad() {
@@ -35,20 +106,9 @@ class ContinuePostUploadViewController: UIViewController, UITextFieldDelegate {
             itemDescription = descrip
         }
         image = firstPageItem["image"] as? UIImage
+        postsRef = Firestore.firestore().collection("Post")
     }
-    
-    @objc fileprivate func uploadPhoto(){
-    }
-    
-    @IBAction func submitPressed(_ sender: Any) {
-        // create new post
-        
-        // add post reference to this user
-        
-    }
-    
-    
-    
+
     
     // price formatter get from the Youtube vedio "Currency format input to UITextField in Swift"
     // https://www.youtube.com/watch?v=YBBNPH6JYxY

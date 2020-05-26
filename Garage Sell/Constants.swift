@@ -25,6 +25,10 @@ class Constants{
     static let usersCollectionName = "users"
     static let postsCollectionName = "Post"
     
+    static let noImage = "noImageFound.jpeg"
+    static let somethingWentWrong = "SomethingWentWrong.png"
+    
+    
     enum Category : String{
         case beauty = "Beauty"
         case books = "Books"
@@ -36,5 +40,7 @@ class Constants{
         case tools = "Tools"
         case miscellaneous = "Misc."
     }
+    
+    
     
 }

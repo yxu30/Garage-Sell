@@ -12,82 +12,55 @@ import Firebase
 
 class PostDetailViewController: UIViewController {
     
-    var post: Post?
-    var postRef : DocumentReference!
+    var post: Post!
+//    var postRef : DocumentReference!
     var postListener : ListenerRegistration!
-    var noImage = UIImage(named: "noImageFound.jpeg")
+    var uiImage : UIImage!
     
-    @IBOutlet weak var username: UIButton!
-    @IBOutlet var itemImages: [UIImageView]!
+    @IBOutlet weak var username: UILabel!
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var favoriateIconButton: UIButton!
     
     @IBOutlet weak var itemDescription: UITextView!
     
+    var saved = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
+        print("uri? \(post?.imageURI)")
+    }
+    @IBAction func favoriateOnPressed(_ sender: Any) {
+        saved = !saved
+        if saved{
+            favoriateIconButton.tintColor = UIColor(red: 250/255, green: 0, blue: 0, alpha: 0.8)
+            // update and async view
+        }else{
+            favoriateIconButton.tintColor = .opaqueSeparator
+        }
     }
     
     func updateView() {
-        // user
-        // images
+        setUsername()
         itemTitle.text = post?.title
         itemPrice.text = Utility.formatPrice(post!.price)
         itemDescription.text = post?.description
     }
     
-    @objc fileprivate func downloadPhoto(){
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        postListener = postRef.addSnapshotListener({(documentSnapshot, error) in
-            if let error = error{
-                print ("Error getting photoRef \(error)")
-                return
-            }else if !documentSnapshot!.exists{
-                return
+    func setUsername(){
+        let uid = post.owner
+        let userRef = Firestore.firestore().collection(Constants.usersCollectionName).document(uid)
+        userRef.addSnapshotListener { (documentSnapshot, error) in
+            if let documentSnapshot = documentSnapshot{
+                let data = documentSnapshot.data()
+                self.username.text = (data!["name"] as! String)
+            }else{
+                print("Error giving user document \(error!)")
             }
-            self.post = Post(documentSnapshot: documentSnapshot!)
-            // if it is my post, then show the edit on the nav bar
-            
-//            if DataFile.getEmail() == self.photo?.email {
-//                self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.showEditDialog))
-//                    }
-            self.updateView()
-        })
+        }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//        if var imgString = photo?.url {
-//            showSpinner(onView: imageView)
-//            if imgString == ""{
-//                imgString = noImage
-//            }
-//          if let imgUrl = URL(string: imgString) {
-//            DispatchQueue.global().async { // Download in the background
-//              do {
-//                let data = try Data(contentsOf: imgUrl)
-//                DispatchQueue.main.async { // Then update on main thread
-//                    self.removeSpinner()
-//                    self.imageView.image = UIImage(data: data)
-//                }
-//              } catch {
-//                print("Error downloading image: \(error)")
-//              }
-//            }
-//          }
-//        }
-    }
-    
-    
-
-
-    // code of showSpinner and removeSpinner come from the web page
-    // http://brainwashinc.com/2017/07/21/loading-activity-indicator-ios-swift/
     
     var vSpinner : UIView?
     
@@ -102,7 +75,6 @@ class PostDetailViewController: UIViewController {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
-        
         vSpinner = spinnerView
     }
     
@@ -112,5 +84,67 @@ class PostDetailViewController: UIViewController {
             self.vSpinner = nil
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if var imgString = post?.imageURI {
+            
+            showSpinner(onView: itemImageView)
+            if imgString == ""{
+                imgString = "https://homestaymatch.com/images/no-image-available.png"
+            }
+          if let imgUrl = URL(string: imgString) {
+            DispatchQueue.global().async { // Download in the background
+              do {
+                let data = try Data(contentsOf: imgUrl)
+                DispatchQueue.main.async { // Then update on main thread
+                    self.removeSpinner()
+                    self.itemImageView.image = UIImage(data: data)
+                }
+              } catch {
+                print("Error downloading image: \(error)")
+              }
+            }
+          }
+        }
+    }
+    
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        let uri = post?.imageURI
+//        if uri == ""{
+//            itemImageView.image = UIImage(named: Constants.noImage)
+//            return
+//        }
+//
+//        DispatchQueue.global().async { // Download in the background
+//            if uri == ""{
+//                DispatchQueue.main.async {
+//                    self.removeSpinner()
+//                    self.itemImageView.image = UIImage(named: Constants.noImage)
+//                    return
+//                }
+//            }else{
+//                // Get a reference to the storage service using the default Firebase App
+//                let storage = Storage.storage()
+//                let gsReference = storage.reference(forURL: self.post!.imageURI)
+//                // Create a reference to the file you want to download
+//                let islandRef = gsReference.child("images/\(self.post!.imageURI)")
+//                // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+//                islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                    DispatchQueue.main.async {
+//                        self.removeSpinner()
+//                        if error != nil {
+//                        // Uh-oh, an error occurred!
+//                            self.itemImageView.image = UIImage(named: Constants.somethingWentWrong)
+//                        } else {
+//                            self.itemImageView.image = UIImage(data: data!)!
+//                        }
+//                    }
+//                }
+//
+//          }
+//        }
+//    }
+
 }
 

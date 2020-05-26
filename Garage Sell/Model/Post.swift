@@ -6,38 +6,40 @@
 //  Copyright © 2020 Yuhong Xu. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Firebase
 
 
 class Post{
     var id: String
-//    var category: Constants.Category
     var description: String
-//    var images: [String]()
+    var imageURI: String
     var isSell: Bool
-    var owner: DocumentReference
+    var owner: String
     var price: Double
     var sold: Bool
     var title: String
     var createdAt: Timestamp
     var modifiedAt: Timestamp
     
+    var imageView: UIImage?
     
     init(documentSnapshot: DocumentSnapshot){
         self.id = documentSnapshot.documentID
         let data = documentSnapshot.data()
-//        category = Constants.Category(rawValue: data!["category"] as! String)!
         description = data!["description"] as! String
-        
-//        images =
+        imageURI = data!["imageURI"] as! String
         isSell = data!["isSell"] as! Bool
-        owner = data!["owner"] as! DocumentReference
+        owner = data!["owner"] as! String
         price = data!["price"] as! Double
         sold = data!["sold"] as! Bool
         title = data!["title"] as! String
         createdAt = data!["createdAt"] as! Timestamp
         modifiedAt = data!["modifiedAt"] as! Timestamp
+    }
+    
+    func setImageView(_ imageView : UIImage){
+        self.imageView = imageView
     }
     
 }

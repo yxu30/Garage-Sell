@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PostUploadViewController: UIViewController, UITextFieldDelegate {
 
@@ -19,12 +20,16 @@ class PostUploadViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerButton: UIButton!
     
+    
+    var postsRef : CollectionReference!
+    
     var image : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIUtility.floatButton(continueButton)
     }
+    
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
         showImagePickerController()
